@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+</head>
+<body class="main">
+    <div class="container index">
+        <div class="chat-box center-block">
+        <p class="welcom col-sm-12">停下来，我们谈谈心！</p>
+	        <div id="msgShow" class="col-sm-12"></div>
+	    	<form class="form-inline" action="javascript:;">
+	    		<input type="text" style="width:83%" class="form-control" required="" name="message" id="word">
+	    		<button type="submit" style="width:16%;background:#f97447;opacity:0.8" id="submit" class="btn btn-primary">发言</button>
+	    	</form>	
+        </div> 
+    </div>
+
+</body>
+    <script type="text/javascript">        
+        function get(){
+        	var evtSource;
+        	//获得数据
+        	evtSource=new EventSource("index.php?a=get");
+        	$("#msgSdiv").remove();
+        	var createDiv=$("<div id='msgSdiv'></div>");
+        	evtSource.onmessage=function(e){
+        		$("#msgSdiv").html(e.data);
+        		$("#msgShow").append(createDiv);
+        	}
+        }
+        get();
+        
+        //推送数据到服务器（提交留言）
+        function tuisong(){
+			var input=$('input[name=message]');
+			var msg=input.val();
+			$.ajax({
+				type:"post",
+				url:"index.php?a=put",
+				data:{content:msg}
+			});
+			//发送完成后清空input
+			input.val('');
+        }
+        $("#word").keydown(function(event){
+        	if (event.keyCode==13) {
+        		tuisong();
+        	};
+        });
+        $("form").submit(function(){
+           tuisong();
+        });
+        
+        //滚动条自动滚到底部
+        window.onload=function(){
+            document.getElementById("msgShow").scrollIntoView(true);	
+        }
+
+        setInterval(function(){
+        	var evtSource;
+        	evtSource=new EventSource("index.php?a=delete");
+        },7200000);
+    </script>
+</html>
