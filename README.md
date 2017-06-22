@@ -7,4 +7,7 @@
  
 3.登陆界面
 
-![Image text](https://github.com/Rcyan/chatRoom/blob/index.php/img/logo.PNG)
+![Image text](https://github.com/Rcyan/chatRoom/blob/index.php/img/logo.JPG)
+ 
+4.聊天界面
+![Image text](https://github.com/Rcyan/chatRoom/blob/index.php/img/index.JPG)
