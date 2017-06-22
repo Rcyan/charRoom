@@ -1,0 +1,48 @@
+body{
+    background: #1c2439;
+}
+
+/*聊天界面*/
+.main{
+	padding:60px 0 0 0;
+}
+.chat-box{
+	width: 80%;
+}
+.main .welcom{
+	color:#747474;
+	padding-left:20px;
+}
+.index .left{
+    margin-bottom:200px;
+    word-break: break-all;
+}
+.index #msgShow{
+    height: 450px;
+    color: #fff;
+    background: #f97447;
+    opacity: 0.8;
+    overflow-y: auto;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+}
+
+/*登陆界面*/
+.login{
+	margin:100px auto;
+}
+.login .logo{
+	width: 280px;
+	height: 280px;
+	background: #fff;
+	margin:35px auto;
+	border-radius: 140px;
+	position: relative;
+}
+.login .logo img{
+	position: absolute;
+	margin:0 auto;
+	left: 10px;
+	top: 10px;
+}
